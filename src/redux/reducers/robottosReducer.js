@@ -1,14 +1,16 @@
 import robottosActionTypes from "../actions/actionTypes";
 
-const currentRobottoReducer = (robotto = {}, action = {}) => {
-  let newCurrentRobotto;
+const robottosReducer = (robottos = [], action = {}) => {
+  let newRobottos;
 
-  if (action.type === robottosActionTypes.loadRobottos) {
-    newCurrentRobotto = { ...action.robotto };
-  } else {
-    newCurrentRobotto = { ...robotto };
+  switch (action.type) {
+    case robottosActionTypes.loadRobottos:
+      newRobottos = [...action.robottos];
+      break;
+    default:
+      newRobottos = [...robottos];
   }
-  return newCurrentRobotto;
+  return newRobottos;
 };
 
-export default currentRobottoReducer;
+export default robottosReducer;
